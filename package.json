@@ -1,0 +1,24 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "description": "Simple chat application using SocketIO.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SocketIO",
+    "chat",
+    "realtime",
+    "websocket"
+  ],
+  "author": "hbc <bcxxxxxx@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^0.9.16",
+    "express": "^4.0.0"
+  },
+  "devDependencies": {
+    "supervisor": "^0.6.0"
+  }
+}

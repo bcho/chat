@@ -1,0 +1,30 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "description": "A simple chat server using SocketIO",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "realtime",
+    "chat",
+    "socketio",
+    "websocket"
+  ],
+  "authors": [
+    "hbc <bcxxxxxx@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pure": "~0.4.2",
+    "underscore": "~1.6.0"
+  }
+}

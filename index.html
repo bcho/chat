@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat</title>
+    <link rel="stylesheet" href="static/bower_components/pure/pure.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container"> 
+        <div class="chat pure-g">
+            <div class="pure-u-3-4"> 
+                <div class="chat-window">
+                    <ul class="chat-window__bubbles">
+                        <script class="chat-window__bubbles__item--tmpl" type="text/html">
+                            <li class="chat-window__bubbles__item" data-user-name="<%= user.name %>" data-user-id="<%= user.id %>" data-post-time="<%= timestamp %>" title="From: <%= user.name %>">
+                            <p class="chat-window__bubbles__item__text">
+                                <%= content %>
+                            </p>
+                        </li>
+                        </script>
+                    </ul>
+                    <div class="chat-window__input">
+                        <div>
+                            <textarea class="chat-window__input__text"></textarea>
+                        </div>
+                        <input type="submit" class="chat-window__input__submit" value="Send"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="pure-u-1-4">
+                <div class="chat-clients">
+                    <ul class="chat-clients__list">
+                        <script class="chat-clients__list__client--tmpl" type="text/html">
+                            <li class="chat-clients__list__client" data-user-name="<%= name %>" data-user-id="<%= id %>">
+                            <p class="chat-clients__list__client__name">
+                                <%= name %>
+                            </p>
+                        </li>
+                        </script>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/bower_components/underscore/underscore.js"></script>
+    <script src="/chat/socket.io.js"></script>
+    <script src="/static/scripts/client.js"></script>
+</body>
+</html>
