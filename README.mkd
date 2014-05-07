@@ -1,6 +1,6 @@
 # Chat
 
-Some dead simple chat application for demonstration.
+Some dead simple chat applications for demonstration.
 
 
 ## Implementations
