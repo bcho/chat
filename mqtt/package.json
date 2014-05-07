@@ -1,0 +1,19 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "description": "A dead simple chat application using mqtt.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mqtt",
+    "chat",
+    "demo"
+  ],
+  "author": "hbc <bcxxxxxx@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mqtt": "^0.3.8"
+  }
+}
