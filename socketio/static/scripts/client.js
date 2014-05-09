@@ -24,7 +24,7 @@
     });
 
     socket.on('users', function (data) {
-        users = users;
+        users = data;
         updateClientsList(users);
     });
 
