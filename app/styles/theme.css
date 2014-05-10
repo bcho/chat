@@ -162,3 +162,54 @@
   line-height: 24px;
   color: #666;
 }
+
+/* Modal */
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  margin: 50px auto;
+  padding: 0;
+  display: block;
+  width: 550px;
+
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 1px 0 0 0 rgba(237, 241, 242, 0.6);
+}
+
+.modal__header {
+  margin: 5px 0;
+  padding: 5px 10px 0;
+
+  border-bottom: 1px solid #edf1f2;
+  color: #666;
+}
+
+.modal__header h3 {
+  margin: none;
+  padding: none;
+
+  font-weight: normal; 
+}
+
+.modal__content {
+  margin: 15px 0;
+  padding: 0 10px;
+}
+
+.modal__footer {
+  padding: 15px 10px;
+
+  border-top: 1px solid #edf1f2;
+}

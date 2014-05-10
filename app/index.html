@@ -33,7 +33,7 @@
             </div>
             <div class="chat__clients__settings">
                 <h1 class="chat__clients__settings__title">SETTINGS</h1>
-                <a class="chat__clients__settings__item" href="#"><i class="fa fa-user"></i> Profile</a>
+                <a class="chat__clients__settings__item" href="#" data-target=".user-profile__modal"><i class="fa fa-user"></i> Profile</a>
                 <span class="chat__clients__settings__sep">/</span>
                 <a class="chat__clients__settings__item" href="#"><i class="fa fa-power-off"></i> Logout</a>
                 </ul>
@@ -69,5 +69,22 @@
             </div>
         </div>
     </div>
+    <div class="user-profile__modal modal-wrapper">
+        <section class="modal">
+            <header class="user-profile__modal__header modal__header">
+                <h3>What is your name?</h3>
+            </header>
+            <article class="user-profile__modal__header modal__content">
+                <form class="user-profile__modal__form modal__form pure-form">
+                    <input class="pure-input-1" type="text" placeholder="name name name..." autofocus>
+                </form>
+            </article>
+            <footer class="user-profile__modal__footer modal__footer">
+                <button type="submit" class="user-profile__modal__cancel-btn pure-button pure-button-danger modal__close-btn">Discard</button>
+                <button type="submit" class="user-profile__modal__submit-btn pure-button pure-button-primary pull-right modal__close-btn">Save</button>
+            </footer>
+        </section>
+    </div>
 </body>
+<script src="/scripts/app.js"></script>
 </html>
