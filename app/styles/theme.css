@@ -1,0 +1,164 @@
+/* Chat Client */
+
+.chat__clients {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 12.5%;
+
+  background-color: #edf1f2;
+}
+
+.chat__clients__title {
+  margin: 25px 15px 15px;
+  padding: 0;
+
+  font-weight: normal;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #cbd2d6;
+}
+
+.chat__clients__client {
+  margin: 10px 15px;
+  padding: 2px 0;
+}
+
+.chat__clients__client__name,
+.chat__clients__client__status {
+  margin: 0;
+  padding: 0;
+
+  font-size: 1.2em;
+}
+
+.chat__clients__client__name {
+  font-weight: normal;
+  color: #6c777e;
+}
+
+.chat__clients__client__status {
+  margin-right: .5em;
+
+  font-size: .7em;
+}
+
+.chat__clients__client__status--chatty {
+  color: #3498db;
+}
+
+.chat__clients__client__status--online {
+  color: #2ecc71;
+}
+
+
+/* Chat Settings */
+
+.chat__clients__settings {
+  position: absolute;
+  bottom: 0;
+  margin: 50px 15px 125px;
+}
+
+.chat__clients__settings__title {
+  margin-bottom: 15px;
+  padding: 0;
+
+  font-weight: normal;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #cbd2d6;
+}
+
+.chat__clients__settings__list {
+  margin: 0;
+  padding: 0;
+  
+  list-style: none;
+}
+
+.chat__clients__settings__item {
+  margin: 3px 0;
+  padding: 0;
+  
+  text-decoration: none;
+  color: #6c777e;
+  font-size: 14px;
+}
+
+.chat__clients__settings__item:hover {
+  color: #2c3e50;
+}
+
+.chat__clients__settings__sep {
+  margin: 0 3px;
+
+  font-size: 12px;
+  color: #6c777e;
+}
+
+
+/* Chat Message */
+
+.chat__messages__list {
+  margin-left: 12.5%;
+}
+
+.chat__messages__message {
+  margin: 15px 60px 20px 30px;
+  padding: 15px;
+}
+
+.chat__messages__message--from-other {
+  text-align: left;
+}
+
+.chat__messages__message--from-me {
+  text-align: right;
+}
+
+.chat__messages__message__meta {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+
+  font-weight: normal;
+  color: #999;
+  font-size: .85em;
+}
+
+.chat__messages__message__content {
+  margin: 0;
+  padding: 0;
+
+  font-size: 24px;
+}
+
+
+/* Chat Compose */
+
+.chat__messages__compose {
+  position: fixed;
+  left: 12.5%;
+  bottom: 0;
+  width: 100%;
+
+  border-top: 2px solid #edf1f2;
+  background: #fff;
+}
+
+.chat__messages__compose__text {
+  width: 99%;
+}
+
+.chat__messages__compose__text-input {
+  outline: none;
+  border: 0;
+  margin: 10px 10px;
+  width: 100%;
+  height: 32px;
+
+  font-size: 24px;
+  line-height: 24px;
+  color: #666;
+}

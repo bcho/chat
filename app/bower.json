@@ -1,0 +1,27 @@
+{
+  "name": "chat application",
+  "version": "0.0.1",
+  "homepage": "https://github.com/bcho/chat",
+  "description": "Simple chat application for demonstration.",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "chat",
+    "demo"
+  ],
+  "authors": [
+    "hbc <bcxxxxxx@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pure": "~0.4.2"
+  }
+}
