@@ -101,10 +101,9 @@
     var messageComposeContent = document.querySelector('.chat__messages__compose__text-input');
 
     messageComposeContent.addEventListener('keydown', function (e) {
-        var content;
+        var content = messageComposeContent.value;
 
-        if (e.keyCode === 13) {
-            content = messageComposeContent.value;
+        if (e.keyCode === 13 && contnet !== '') {
             messageComposeContent.value = ''
             socket.emit('message-create', content);
         }
