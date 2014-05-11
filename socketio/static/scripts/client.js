@@ -53,30 +53,11 @@
         return _.template(tmpl);
     };
 
-    // Current User Highlighting
-    // =========================
-
-    var isMeTagTmpl = _.template('[data-user-id=<%= id %>]');
-    var isMeClassName = 'chat-client--is-me';
-
-    function hightlightMe() {
-        if (me === undefined) {
-            return;
-        }
-
-        var nodes = document.querySelectorAll(isMeTagTmpl(me));
-
-        for (var i = 0; i < nodes.length; i++) {
-            nodes[i].classList.add(isMeClassName);
-        }
-    }
-
-
     // Clients List
     // ============
     
-    var clientsList = document.querySelector('.chat-clients__list');
-    var clientsListItemTmpl = t('.chat-clients__list__client--tmpl');
+    var clientsList = document.querySelector('.chat__clients__list');
+    var clientsListItemTmpl = t('.chat__clients__client--tmpl');
 
     function updateClientsList(clients) {
         var buffer = '';
@@ -87,42 +68,45 @@
 
         console.log('Refresh clients list...');
         clientsList.innerHTML = buffer;
-
-        hightlightMe();
     }
 
     // Messages
     // ========
 
-    var messagesList = document.querySelector('.chat-window__bubbles');
-    var messagesListItemTmpl = t('.chat-window__bubbles__item--tmpl');
+    var messagesList = document.querySelector('.chat__messages__list');
+    var messagesListItemTmpl = t('.chat__messages__message--tmpl');
 
     function updateMessagesList(messages) {
-        var buffer = '';
+        var buffer = '',
+            message;
 
         for (var i = 0; i < messages.length; i++) {
-            buffer =  buffer + messagesListItemTmpl(messages[i]);
+            message = messages[i];
+            
+            message.fromMe = 'chat__messages__message--from-other';
+            if (me && me.id === message.user.id) {
+                message.fromMe = 'chat__messages__message--from-me';
+                message.user.name = 'I';
+            }
+
+            message.fuzzyTime = fuzzyTime(message.timestamp);
+            
+            buffer =  buffer + messagesListItemTmpl(message);
         }
 
         console.log('Refresh messages list...');
         messagesList.innerHTML = buffer;
-        
-        hightlightMe();
     }
 
-    var messageComposeContent = document.querySelector('.chat-window__input__text');
-    var messageComposeButton = document.querySelector('.chat-window__input__submit');
+    var messageComposeContent = document.querySelector('.chat__messages__compose__text-input');
 
-    messageComposeButton.onclick = function (e) {
-        e.preventDefault();
+    messageComposeContent.addEventListener('keydown', function (e) {
+        var content;
 
-        var content = messageComposeContent.value;
-        messageComposeContent.value = '';
-
-        if (content === '') {
-            return;
+        if (e.keyCode === 13) {
+            content = messageComposeContent.value;
+            messageComposeContent.value = ''
+            socket.emit('message-create', content);
         }
-
-        socket.emit('message-create', content);
-    };
+    });
 })();
