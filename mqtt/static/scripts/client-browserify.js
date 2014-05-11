@@ -4927,6 +4927,28 @@ messageComposeContent.addEventListener('keydown', function (e) {
     }
 });
 
+
+// Profile
+// =======
+
+var profileModal = document.querySelector('.user-profile__modal'),
+    updateProfileName = document.querySelector('.user-profile__modal__name'),
+    updateProfileBtn = document.querySelector('.user-profile__modal__submit-btn');
+
+updateProfileBtn.addEventListener('click', function (e) {
+    var name;
+
+    e.preventDefault();
+
+    name = updateProfileName.value;
+    if (name) {
+        client.publish('/user/me/name/set', name);
+    }
+});
+
+// Prompt for user name in start up.
+toggleModal(profileModal);
+
 },{"mows":2}],40:[function(_dereq_,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
