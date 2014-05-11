@@ -4829,41 +4829,30 @@ client.subscribe('messages');
 client.subscribe('messages-update');
 
 // Request for current user's informations.
-client.publish('user-me', '');
+client.publish('/user/me', '');
 
 // Request for users list.
-client.publish('users', '');
+client.publish('/user/all', '');
 
 // Request for messages list.
-client.publish('messages', '');
+client.publish('/message/all', '');
 
 client.on('message', function (topic, message) {
-    console.log('Receive topic %s from server.', topic);
 
     // Events
     // ======
     // TODO refactory matching logic.
 
-    if (topic === 'user-me') {
+    if (topic === '/user/me') {
         me = JSON.parse(message);
     }
 
-    if (topic === 'users') {
+    if (topic === '/user/all') {
         users = JSON.parse(message);
         updateClientsList(users);
     }
 
-    if (topic === 'users-update') {
-        users = JSON.parse(message);
-        updateClientsList(users);
-    }
-
-    if (topic === 'messages') {
-        messages = JSON.parse(message);
-        updateMessagesList(messages);
-    }
-
-    if (topic === 'messages-update') {
+    if (topic === '/message/all') {
         messages = JSON.parse(message);
         updateMessagesList(messages);
     }
@@ -4934,7 +4923,7 @@ messageComposeContent.addEventListener('keydown', function (e) {
 
     if (e.keyCode === 13 && content !== '') {
         messageComposeContent.value = ''
-        client.publish('message-create', content);
+        client.publish('/message/create', content);
     }
 });
 

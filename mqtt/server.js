@@ -73,20 +73,22 @@ mows.attachServer(server, function (client) {
         var topic = packet.topic;
 
         console.log('Receive topic: %s from user %s', topic, client.user.id);
-        if (topic === 'user-me') {
+        if (topic === '/user/me') {
             client.user.publish({
                 topic: topic,
                 payload: JSON.stringify(client.user.getValues())
             });
-        } else if (topic === 'user-set-name') {
+        } else if (topic === '/user/me/name/set') {
             client.user.setName(packet.payload);
             users.notifyUpdate();
-        } else if (topic === 'messages') {
+        } else if (topic === '/user/all') {
+            users.notifyUpdate();
+        } else if (topic === '/message/all') {
             client.user.publish({
                 topic: topic,
                 payload: JSON.stringify(messages.messagesList())
             });
-        } else if (topic === 'message-create') {
+        } else if (topic === '/message/create') {
             messages.add(client.user, packet.payload);
             notifyUpdateMessages();
         }
@@ -94,7 +96,7 @@ mows.attachServer(server, function (client) {
 
     function notifyUpdateMessages() {
         users.broadcast({
-            topic: 'messages-update',
+            topic: '/message/all',
             payload: JSON.stringify(messages.messagesList())
         });
     }
@@ -156,7 +158,7 @@ UsersCollection.prototype.usersList = function () {
 
 UsersCollection.prototype.notifyUpdate = function () {
     this.broadcast({
-        topic: 'users-update',
+        topic: '/user/all',
         payload: JSON.stringify(this.usersList())
     });
 };
