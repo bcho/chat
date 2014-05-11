@@ -51,7 +51,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     // Set user information.
-    socket.on('/user/name/set', function (name) {
+    socket.on('/user/me/name/set', function (name) {
         users[socket.id].setName(name);
         notifyUpdateUsers();
     });

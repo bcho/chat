@@ -96,4 +96,25 @@
             socket.emit('/message/create', content);
         }
     });
+
+    // Profile
+    // =======
+
+    var profileModal = document.querySelector('.user-profile__modal'),
+        updateProfileName = document.querySelector('.user-profile__modal__name'),
+        updateProfileBtn = document.querySelector('.user-profile__modal__submit-btn');
+
+    updateProfileBtn.addEventListener('click', function (e) {
+        var name;
+
+        e.preventDefault();
+
+        name = updateProfileName.value;
+        if (name) {
+            socket.emit('/user/me/name/set', name);
+        }
+    });
+
+    // Prompt for user name in start up.
+    toggleModal(profileModal);
 })();
