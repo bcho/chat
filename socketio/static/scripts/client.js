@@ -20,7 +20,6 @@
 
     socket.on('user-me', function (data) {
         me = data;
-        hightlightMe();
     });
 
     socket.on('users', function (data) {
@@ -103,7 +102,7 @@
     messageComposeContent.addEventListener('keydown', function (e) {
         var content = messageComposeContent.value;
 
-        if (e.keyCode === 13 && contnet !== '') {
+        if (e.keyCode === 13 && content !== '') {
             messageComposeContent.value = ''
             socket.emit('message-create', content);
         }
