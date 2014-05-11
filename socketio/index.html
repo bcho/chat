@@ -38,7 +38,7 @@
                 <script type="text/html" class="chat__messages__message--tmpl">
                 <article class="chat__messages__message <%= fromMe %>" data-user-name="<%= user.name %>" data-user-id="<%= user.id %>" data-post-time="<%= timestamp %>">
                     <h3 class="chat__messages__message__meta">
-                        At <span class="chat__messages__timestamp"><%= fuzzyTime %></span> <%= user.name %> said:
+                        <span class="chat__messages__timestamp fuzzy-time__updatable" data-fuzzy_time-timestamp=<%= timestamp %>></span> <%= user.name %> said:
                     </h3>
                     <p class="chat__messages__message__content"><%= content %></p>
                 </article>

@@ -88,13 +88,12 @@
                 message.user.name = 'I';
             }
 
-            message.fuzzyTime = fuzzyTime(message.timestamp);
-            
             buffer =  buffer + messagesListItemTmpl(message);
         }
 
         console.log('Refresh messages list...');
         messagesList.innerHTML = buffer;
+        updateFuzzyTime();
     }
 
     var messageComposeContent = document.querySelector('.chat__messages__compose__text-input');

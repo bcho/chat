@@ -48,22 +48,38 @@ function fuzzyTime(since) {
         msPerYear = msPerMonth * 12;
 
     if (elapsed < msThreshold) {
-        return 'just now';
+        return 'Just now';
     } else if (elapsed < msPerMinute) {
-        return Math.round(elapsed / 1000) + ' seconds ago';
+        return 'At ' + Math.round(elapsed / 1000) + ' seconds ago';
     } else if (elapsed < msPerHour) {
-        return Math.round(elapsed / msPerMinute) + ' minutes ago';
+        return 'At ' + Math.round(elapsed / msPerMinute) + ' minutes ago';
     } else if (elapsed < msPerDay) {
-        return Math.round(elapsed / msPerHour) + ' hours ago';
+        return 'At ' + Math.round(elapsed / msPerHour) + ' hours ago';
     } else if (elapsed < msPerMonth) {
-        return Math.round(elapsed / msPerDay) + ' days ago';
+        return 'At ' + Math.round(elapsed / msPerDay) + ' days ago';
     } else if (elapsed < msPerYear) {
-        return Math.round(elapsed / msPerMonth) + ' months ago';
+        return 'At ' + Math.round(elapsed / msPerMonth) + ' months ago';
     } else {
-        return Math.round(elapsed / msPerYear) + ' years ago';
+        return 'At ' + Math.round(elapsed / msPerYear) + ' years ago';
+    }
+}
+
+function updateFuzzyTime() {
+    var selector = '.fuzzy-time__updatable',
+        timestampField = 'data-fuzzy_time-timestamp',
+        elems = document.querySelectorAll(selector),
+        elemsCount = elems.length,
+        elem,
+        timestamp;
+
+    for (var i = 0; i < elemsCount; i++) {
+        elem = elems[i];
+        timestamp = elem.attributes[timestampField].value;
+        elem.innerHTML = fuzzyTime(timestamp);
     }
 }
 
 (function () {
     bindModals();
+    setInterval(updateFuzzyTime, 5000);
 })();
