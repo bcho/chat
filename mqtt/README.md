@@ -16,7 +16,7 @@ Oh I just vendor all the frontend dependencies (checkout `static/bower.json`).
 
 ## TODO
 
-- [ ] Rewrite frontend
+- [x] Rewrite frontend
 - [ ] Refactory code
 - [ ] Backend load test
 
