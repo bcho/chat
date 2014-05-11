@@ -37,6 +37,12 @@ function bindModals() {
     }
 }
 
+function toggleModal(modalElem) {
+    var orig = modalElem.style.display;
+
+    modalElem.style.display = orig === 'block' ? 'none' : 'block';
+}
+
 function fuzzyTime(since) {
     var elapsed = Date.now() - since,
     
