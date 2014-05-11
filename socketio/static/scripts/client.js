@@ -9,35 +9,25 @@
     
     socket.on('connect', function (data) {
         // Request for current user's informations.
-        socket.emit('user-me');
+        socket.emit('/user/me');
 
         // Request for users list.
-        socket.emit('users');
+        socket.emit('/user/all');
 
         // Request for messages list.
-        socket.emit('messages');
+        socket.emit('/message/all');
     });
 
-    socket.on('user-me', function (data) {
+    socket.on('/user/me', function (data) {
         me = data;
     });
 
-    socket.on('users', function (data) {
+    socket.on('/user/all', function (data) {
         users = data;
         updateClientsList(users);
     });
 
-    socket.on('users-update', function (data) {
-        users = data;
-        updateClientsList(users);
-    });
-
-    socket.on('messages', function (data) {
-        messages = data;
-        updateMessagesList(messages);
-    });
-
-    socket.on('messages-update', function (data) {
+    socket.on('/message/all', function (data) {
         messages = data;
         updateMessagesList(messages);
     });
@@ -103,7 +93,7 @@
 
         if (e.keyCode === 13 && content !== '') {
             messageComposeContent.value = ''
-            socket.emit('message-create', content);
+            socket.emit('/message/create', content);
         }
     });
 })();

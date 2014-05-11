@@ -33,7 +33,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('disconnect', function () {
         delete users[socket.id];
-        io.sockets.emit('users-update', users);
+        io.sockets.emit('/user/all', users);
     });
 
 
@@ -42,23 +42,23 @@ io.sockets.on('connection', function (socket) {
 
     // TODO Use a function factory wrapper.
     function notifyUpdateUsers() {
-        io.sockets.emit('users-update', users);
+        io.sockets.emit('/user/all', users);
     }
 
     // Request for users list.
-    socket.on('users', function (from, data) {
-        socket.emit('users', users);
+    socket.on('/user/all', function (from, data) {
+        socket.emit('/user/all', users);
     });
 
     // Set user information.
-    socket.on('user-set-name', function (name) {
+    socket.on('/user/name/set', function (name) {
         users[socket.id].setName(name);
         notifyUpdateUsers();
     });
 
     // Get user information.
-    socket.on('user-me', function () {
-        socket.emit('user-me', users[socket.id]);
+    socket.on('/user/me', function () {
+        socket.emit('/user/me', users[socket.id]);
     });
 
 
@@ -67,16 +67,16 @@ io.sockets.on('connection', function (socket) {
 
     // TODO Use a function factory wrapper.
     function notifyUpdateMessages() {
-        io.sockets.emit('messages-update', messages);
+        io.sockets.emit('/message/all', messages);
     }
 
     // Request for messages list.
-    socket.on('messages', function (from, data) {
-        socket.emit('messages', messages);
+    socket.on('/message/all', function (from, data) {
+        socket.emit('/message/all', messages);
     });
 
     // Post a new message.
-    socket.on('message-create', function (message) {
+    socket.on('/message/create', function (message) {
         messages.push(new Message(user, message));
         notifyUpdateMessages();
     });
