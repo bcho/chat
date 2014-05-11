@@ -22,6 +22,9 @@
 .chat__clients__client {
   margin: 10px 15px;
   padding: 2px 0;
+
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
 .chat__clients__client__name,
